@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demoApp">
+    <head>
+        <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+        <script type="text/javascript" src="./node_modules/angular/angular.min.js"></script>
+        <script type="text/javascript" src="./node_modules/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="./src/app.js"></script>
+    </head>
+    <body ng-controller="MainCtrl">
+        <div class="container">
+            <div class="row">
+                <h2>Module</h2>
+                <p>{{message}}</p>
+            </div>
+            <div class="row">
+                <h2>Component</h2>
+                <demo-component></demo-component>
+            </div>
+            <div class="row">
+                <h2>In build Directive : ng-repeat</h2>
+                <ul>
+                    <li ng-repeat="name in names">
+                        {{name}}
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <h2>Custom Directive & Data Binding</h2>
+                <div class="col-sm-4">
+                    <form class="form" role="form">
+                        <div class="form-group">
+                            <label class="control-label">Type Your Name</label>
+                            <input type="text" class="form-control" ng-model="name"/>
+                            <div ng-show="name">
+                                <say-hello name="name"></say-hello>
+                            </div>
+                        </div>
+                    </form>
+                </div>                   
+            </div>
+            <div class="row" ng-controller="studentCtrl">
+                <h2>Filters</h2>
+                <table border="0">
+                    <tr>            
+                        <!-- uppercase filter -->            
+                        <td>Name in Upper Case: </td><td> {{student.fullName() | uppercase}}</td>            
+                    </tr>            
+                    <tr>            
+                        <!-- lowercase filter -->            
+                        <td>Name in Lower Case: </td><td> {{student.fullName() | lowercase}}</td>            
+                    </tr>            
+                    <tr>            
+                        <!-- Currency Filter -->            
+                        <td>fees in currency: </td><td> {{student.fees | currency}}</td>
+                    </tr>            
+                    <tr>            
+                        <td>Subject:</td>            
+                        <td>            
+                            <ul>            
+                                <li ng-repeat = "subject in student.subjects | filter: subjectName |orderBy:'marks'">
+                                {{ subject.name + ', marks:' + subject.marks }}            
+                                </li>            
+                            </ul>            
+                        </td>            
+                    </tr>            
+                </table>
+            </div>
+            <div class="row" ng-controller="CalculatorCtrl">
+                <h2>Factory</h2>
+                <form role="form" ng-submit="calculate()">      
+                    <div class="col-sm-12 form-group">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <input type="number" class="form-control col-md-3" name="no1" ng-model="no1" id="no1" required placeholder="enter a number"/>
+                            </div>                          
+                            <div class="col-sm-1">
+                                <select class="form-control" ng-model="type" ng-options="type.value for type in types"></select>
+                            </div>                          
+                            <div class="col-sm-3">
+                                <input type="number" class="form-control col-md-3" name="no2" ng-model="no2" id="no2" required placeholder="enter another number"/>
+                            </div>                          
+                            <div class="col-sm-1">
+                                <input type="submit" value=" = "	class="btn btn-primary" />
+                            </div>
+                            <div class="col-sm-2">
+                                {{result}}
+                            </div>
+                        </div>                         
+                    </div>                                    
+                </form>               
+            </div>
+            <div class="row">
+                <h2>Service</h2>
+                <p>{{helloService}}</p>
+            </div>
+        </div>
+    </body>
+</html>
