@@ -11,8 +11,8 @@ demoApp.controller('MainCtrl', function($scope, helloService) {
 
 demoApp.controller('studentCtrl', function($scope) {
     $scope.student = {
-       firstName: "Mahesh",
-       lastName: "Parashar",
+       firstName: "Prathyusha",
+       lastName: "",
        fees:500,
        subjects:[
           {name:'Physics',marks:70},
