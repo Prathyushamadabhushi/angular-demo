@@ -1,4 +1,4 @@
 # angular-demo
 Angular features demo
 
-clone to do npm install
+clone and do npm install
